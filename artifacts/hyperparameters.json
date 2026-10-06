@@ -1,0 +1,13 @@
+{
+  "emb_dim": 32,
+  "hidden": [
+    128,
+    64
+  ],
+  "dropout": 0.3,
+  "lr": 0.001,
+  "weight_decay": 1e-05,
+  "batch_size": 512,
+  "epochs": 40,
+  "patience": 5
+}

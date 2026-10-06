@@ -1,0 +1,20 @@
+{
+  "n_users": 1000,
+  "n_items": 600,
+  "global_mean": 4.054318962824118,
+  "best_pop_weight": 0.5,
+  "hyperparameters": {
+    "emb_dim": 32,
+    "hidden": [
+      128,
+      64
+    ],
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 512,
+    "epochs": 40,
+    "patience": 5
+  },
+  "seed": 42
+}

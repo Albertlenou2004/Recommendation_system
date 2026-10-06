@@ -14,11 +14,7 @@ venv/
 env/
 
 # Local app data
-artifacts/
 data/
-*.npz
-*.npy
-*.joblib
 
 # Secrets
 .env

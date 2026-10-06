@@ -19,6 +19,15 @@ streamlit run app.py                   # interactive demo (needs the pipeline to
 ```
 Everything is seeded (`SEED = 42`), so results are reproducible.
 
+## 2b. Deploy to Streamlit Community Cloud
+The precomputed runtime files in `artifacts/` are included in this repository, so deployment does not need to train the model.
+
+1. Open [share.streamlit.io](https://share.streamlit.io/) and sign in with GitHub.
+2. Select **Create app**, then choose this repository and the `main` branch.
+3. Set the app file path to `app.py`, then select **Deploy**.
+
+Keep raw local datasets in `data/`; that folder remains excluded from Git.
+
 ## 3. Files
 | File | Purpose | Rubric |
 |---|---|---|

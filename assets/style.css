@@ -1,0 +1,160 @@
+/* =====================================================================
+   style.css - custom theme for the Hybrid Neural Recommendation System
+   Loaded by app.py through ui.load_css().  Colours are CSS variables so
+   the whole look can be changed in one place.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #4F46E5;
+  --primary-dark: #3730A3;
+  --accent: #06B6D4;
+  --bg: #F5F6FA;
+  --card: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --good: #10B981;
+  --radius: 16px;
+  --shadow: 0 1px 2px rgba(16,24,40,.06), 0 6px 18px rgba(16,24,40,.07);
+  --shadow-hover: 0 2px 4px rgba(16,24,40,.08), 0 14px 30px rgba(79,70,229,.18);
+}
+
+html, body, [class*="css"], .stApp {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+}
+.stApp { background: var(--bg); }
+.block-container { padding-top: 1.6rem; padding-bottom: 3rem; max-width: 1180px; }
+
+/* hide Streamlit chrome we do not need */
+#MainMenu, footer { visibility: hidden; }
+header[data-testid="stHeader"] { background: transparent; }
+
+/* ------------------------------------------------------------ hero banner */
+.hero {
+  background: linear-gradient(120deg, #4F46E5 0%, #7C3AED 55%, #06B6D4 120%);
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 34px;
+  margin-bottom: 22px;
+  box-shadow: 0 12px 34px rgba(79,70,229,.30);
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; right: -60px; top: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: rgba(255,255,255,.12);
+}
+.hero h1 { margin: 0 0 6px 0; font-size: 2rem; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+.hero p  { margin: 0; font-size: .95rem; opacity: .92; max-width: 760px; color: #fff; }
+.hero .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.hero .tag {
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.28);
+  padding: 4px 12px; border-radius: 999px; font-size: .75rem; font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* ------------------------------------------------------------ section titles */
+.section-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.15rem; font-weight: 700; margin: 26px 0 12px 0; color: var(--text);
+}
+.section-title::before {
+  content: ""; width: 5px; height: 22px; border-radius: 4px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+}
+
+/* ------------------------------------------------------------ stat tiles */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px 16px; box-shadow: var(--shadow);
+}
+.stat .label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.stat .value { font-size: 1.45rem; font-weight: 800; color: var(--primary-dark); margin-top: 2px; }
+
+/* ------------------------------------------------------------ recommendation cards */
+.rec-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.rec-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: #C7D2FE; }
+.rank {
+  flex: 0 0 auto; width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1.05rem; color: #fff;
+  background: linear-gradient(135deg, var(--primary), #7C3AED);
+  box-shadow: 0 4px 12px rgba(79,70,229,.35);
+}
+.rec-card.top .rank { background: linear-gradient(135deg, #F59E0B, #F97316); box-shadow: 0 4px 12px rgba(245,158,11,.4); }
+.rec-body { flex: 1 1 auto; min-width: 0; }
+.rec-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.rec-title { font-size: 1.08rem; font-weight: 700; color: var(--text); }
+.rec-year  { font-weight: 500; color: var(--muted); font-size: .85rem; margin-left: 6px; }
+.rec-rating { font-weight: 700; color: #B45309; font-size: .95rem; white-space: nowrap; }
+.rec-desc { color: var(--muted); font-size: .86rem; margin: 6px 0 10px 0; line-height: 1.5; }
+
+/* genre chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { padding: 3px 11px; border-radius: 999px; font-size: .72rem; font-weight: 600; background: #EEF2FF; color: #3730A3; }
+.g-Action      { background: #FEE2E2; color: #991B1B; }
+.g-Comedy      { background: #FEF3C7; color: #92400E; }
+.g-Drama       { background: #E0E7FF; color: #3730A3; }
+.g-Sci-Fi      { background: #CFFAFE; color: #155E75; }
+.g-Romance     { background: #FCE7F3; color: #9D174D; }
+.g-Horror      { background: #E5E7EB; color: #111827; }
+.g-Documentary { background: #D1FAE5; color: #065F46; }
+.g-Animation   { background: #EDE9FE; color: #5B21B6; }
+
+/* score bar */
+.bar-wrap { display: flex; align-items: center; gap: 10px; margin: 6px 0 4px 0; }
+.bar { flex: 1; height: 8px; background: #EEF0F6; border-radius: 999px; overflow: hidden; }
+.bar > span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+.bar-label { font-size: .72rem; color: var(--muted); font-weight: 600; min-width: 92px; text-align: right; }
+
+/* explanation box */
+.why {
+  margin-top: 10px; padding: 9px 12px; border-radius: 10px; font-size: .84rem;
+  background: #F0F5FF; border-left: 4px solid var(--primary); color: #1E3A8A;
+}
+
+/* history list */
+.hist-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 9px 14px; margin-bottom: 8px; font-size: .9rem;
+}
+.hist-row .stars { color: #F59E0B; letter-spacing: 2px; white-space: nowrap; }
+
+/* empty state */
+.empty {
+  text-align: center; padding: 34px; border: 2px dashed var(--border); border-radius: var(--radius);
+  color: var(--muted); background: rgba(255,255,255,.6);
+}
+
+/* ------------------------------------------------------------ sidebar */
+[data-testid="stSidebar"] { background: #FFFFFF; border-right: 1px solid var(--border); }
+[data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--primary-dark); font-weight: 800; }
+[data-testid="stSidebar"] .stAlert { border-radius: 12px; }
+
+/* ------------------------------------------------------------ native widgets */
+.stButton > button, .stDownloadButton > button {
+  background: linear-gradient(135deg, var(--primary), #7C3AED); color: #fff; border: 0;
+  border-radius: 12px; padding: .55rem 1.2rem; font-weight: 600;
+  box-shadow: 0 6px 16px rgba(79,70,229,.30); transition: transform .15s ease, box-shadow .15s ease;
+}
+.stButton > button:hover, .stDownloadButton > button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(79,70,229,.40); color: #fff; }
+div[data-baseweb="select"] > div { border-radius: 12px; }
+[data-testid="stDataFrame"] { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+[data-testid="stImage"] img { border-radius: 14px; box-shadow: var(--shadow); }
+div[data-testid="stRadio"] label { font-weight: 600; }
+
+/* ------------------------------------------------------------ small screens */
+@media (max-width: 640px) {
+  .hero { padding: 20px; } .hero h1 { font-size: 1.5rem; }
+  .rec-card { padding: 14px; } .rank { width: 36px; height: 36px; }
+}
